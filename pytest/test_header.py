@@ -328,7 +328,7 @@ def test_p13(setup_and_teardown): #企業方案 - 廠商發案服務
         logger.error("Task 13 Error")
         raise
 
-@pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.header
 def test_p14(setup_and_teardown): #精選課程
     driver = setup_and_teardown
@@ -364,4 +364,21 @@ def test_p14(setup_and_teardown): #精選課程
         logger.error("Task 14 Error")
         raise
 
+@pytest.mark.regression
+@pytest.mark.header
+def test_p15(setup_and_teardown): #Title - SVG
+    driver = setup_and_teardown
+    try:
+        # 等待模態對話框可見
+        wait = WebDriverWait(driver, 10)
+        modal = wait.until(
+            EC.visibility_of_element_located((By.XPATH, "/html[1]/body[1]/div[1]/nav[1]/div[1]/h1[1]/a[1]"))
+        )
+
+        modal.click()
+
+        logger.info("Task 15 Pass")
+    except:
+        logger.error("Task 15 Error")
+        raise
 
